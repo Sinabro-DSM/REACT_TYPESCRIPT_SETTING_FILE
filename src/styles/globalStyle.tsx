@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
     body{
         background-color:black;
         padding-top:130px;
-        font-family:Arial, Helvetica, sans-serif;
+        font-family:나눔스퀘어;
     }
     *{
         -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;  
@@ -25,6 +25,9 @@ const GlobalStyle = createGlobalStyle`
         cursor:pointer;
     }
     input{
+        outline:none;
+    }
+    select{
         outline:none;
     }
     ul{
