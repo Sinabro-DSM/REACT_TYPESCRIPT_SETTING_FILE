@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./styles";
-import hashtagProps from "../../interfaces/hashtag";
+import hashtagProps from "../../../interfaces/hashtag";
 
 const Hashtag = ({ contents }: hashtagProps) => {
     return (
