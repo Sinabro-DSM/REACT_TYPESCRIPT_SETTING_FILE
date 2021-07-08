@@ -9,13 +9,10 @@ const GlobalStyle = createGlobalStyle`
         scroll-behavior: smooth;
     }
     body{
-        background-color:black;
-        padding-top:130px;
         font-family:나눔스퀘어;
     }
     *{
         -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;  
-        color:white;
     }
     a{
         text-decoration:none;
@@ -36,6 +33,9 @@ const GlobalStyle = createGlobalStyle`
     input:-webkit-autofill { 
         box-shadow: 0 0 0 30px transparent inset ; 
     } 
+    img{
+        object-fit:cover;
+    }
 `;
 
 export default GlobalStyle;
