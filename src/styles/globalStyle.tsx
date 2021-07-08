@@ -9,8 +9,6 @@ const GlobalStyle = createGlobalStyle`
         scroll-behavior: smooth;
     }
     body{
-        background-color:black;
-        padding-top:130px;
         font-family:나눔스퀘어;
     }
     *{
