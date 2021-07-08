@@ -1,11 +1,6 @@
 import styled from "styled-components";
 import { COLOR } from "../../styles/index";
 
-
-export const Wrapper = styled.section`
-
-`
-
 export const Hashtag = styled.button`
     padding: 8px 15px;
     border: 1px solid ${COLOR.subColor};
