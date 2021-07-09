@@ -13,9 +13,11 @@ export const Header = styled.div`
         align-items: center;
     }
 `
+export const Logo = styled.img`
+    padding-right: 21px;
+`
 export const SearchBar = styled.div`
     width: 330px;
-    //height: 43px;
     border: 1px solid ${COLOR.subColor};
     border-radius: 50px;
     padding-left: 21px;
@@ -30,6 +32,9 @@ export const SearchBar = styled.div`
             color: ${COLOR.subColor};
             font-family: 나눔스퀘어;
         }
+    & div{
+        padding: 0 15px;
+    }
     };
 
 `
