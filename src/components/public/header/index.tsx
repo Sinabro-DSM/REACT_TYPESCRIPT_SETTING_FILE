@@ -1,22 +1,23 @@
 import React from "react";
 import * as S from "./styles";
 import headerProps from "../../../interfaces/header";
-import {ReactComponent as Logo} from "../../../assets/logo.svg";
-import {ReactComponent as Search} from "../../../assets/search.svg";
+import { Logo, Search } from "../../../assets/index";
 
 const Header = ({ imgSrc }: headerProps) => {
-    return(
-        <S.Header>
-            <div>
-            <Logo style={{padding :"0 21px 0 0"}}/>
-            <S.SearchBar>
-                <Search style={{padding :"0 15px"}}/>
-                <input placeholder={"무엇을 찾으시나요?"} />
-            </S.SearchBar>
-            </div>
-            <S.Profile src={imgSrc}></S.Profile>
-        </S.Header>
-    )
-}
+  return (
+    <S.Header>
+      <div>
+        <S.Logo src={Logo}></S.Logo>
+        <S.SearchBar>
+          <div>
+            <Search />
+          </div>
+          <input placeholder={"무엇을 찾으시나요?"} />
+        </S.SearchBar>
+      </div>
+      <S.Profile src={imgSrc}></S.Profile>
+    </S.Header>
+  );
+};
 
 export default Header;
