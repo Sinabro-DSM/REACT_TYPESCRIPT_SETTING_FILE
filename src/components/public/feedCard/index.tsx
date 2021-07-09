@@ -2,6 +2,7 @@ import * as S from "./styles";
 import React from "react";
 import { Heart } from "../../../assets";
 import { FeedCardProps } from "./../../../interfaces/feedCard";
+import Hashtag from "../hashtag/hashtag";
 
 export default function FeedCard({
   profileSrc,
@@ -26,7 +27,7 @@ export default function FeedCard({
         <span>{title}</span>
         <S.TagBox>
           {tag.map((e: string, index: number) => (
-            <div key={index}>#{e}</div>
+            <Hashtag key={index} contents={e} />
           ))}
         </S.TagBox>
         <S.GoodBox>
@@ -40,7 +41,8 @@ export default function FeedCard({
 
 // 아래와 같이 사용
 
-{/* <FeedCard
+{
+  /* <FeedCard
 profileSrc="https://www.fashionseoul.com/wp-content/uploads/2017/07/20170720_hiphop-6.jpg"
 name="김팔복"
 imgSrc="https://www.itnk.co.kr/news/photo/201908/61461_23574_4342.jpg"
@@ -50,4 +52,5 @@ tag={["존잘", "ㅋㅋ"]}
 heart="6"
 userId="1"
 feedId="1"
-/> */}
+/> */
+}

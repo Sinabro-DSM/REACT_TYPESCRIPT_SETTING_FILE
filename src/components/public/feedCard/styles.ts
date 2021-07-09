@@ -59,6 +59,9 @@ export const InforBox = styled(PADDING_CONTAINER)`
 export const TagBox = styled.div`
   display: flex;
   margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 `;
 
 export const GoodBox = styled.div`
