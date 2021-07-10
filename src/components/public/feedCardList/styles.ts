@@ -16,7 +16,6 @@ export const Container = styled.div`
 `;
 
 export const Column = styled.div`
-  width: 20%;
   height: auto;
 `;
 
