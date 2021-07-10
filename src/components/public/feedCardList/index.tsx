@@ -1,5 +1,5 @@
-import FeedCard from "../feedCard";
 import * as S from "./styles";
+import FeedCard from "../feedCard";
 import { FeedCardProps, FeedListProps } from "./../../../interfaces/feedCard";
 import { useEffect, useState } from "react";
 

@@ -3,7 +3,7 @@ import FeedCardList from "../public/feedCardList";
 import * as S from "./styles";
 
 export default function Feed() {
-  const [arr, setArr] = useState([
+  const arr = [
     {
       profileSrc:
         "https://www.fashionseoul.com/wp-content/uploads/2017/07/20170720_hiphop-6.jpg",
@@ -156,10 +156,28 @@ export default function Feed() {
       userId: "1",
       feedId: "1",
     },
-  ]);
+  ];
   return (
-    <>
-      <FeedCardList newArr={arr} />
-    </>
+    <S.Wrapper>
+      <S.TopBar>
+        <S.TopBarContainer>
+          <ul>
+            <S.Li to="/feed/recommend" activeClassName="active">
+              추천
+            </S.Li>
+            <S.Li to="/feed/date" activeClassName="active">
+              최신순
+            </S.Li>
+            <S.Li to="/feed/heart" activeClassName="active">
+              좋아요순
+            </S.Li>
+          </ul>
+          <button>글쓰기</button>
+        </S.TopBarContainer>
+      </S.TopBar>
+      <S.ListContainer>
+        <FeedCardList newArr={arr} />
+      </S.ListContainer>
+    </S.Wrapper>
   );
 }
