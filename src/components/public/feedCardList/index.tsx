@@ -12,7 +12,7 @@ export default function FeedCardList({ newArr }: FeedListProps) {
     for (let i = 0; i < 4; i++) {
       const length = newArr.length / 4;
       for (let j = length * i; j < length * i + length; j++) {
-        const addArr = newArr[Math.ceil(j)];
+        const addArr = newArr[j];
         addArr && tmpArr[i].push(addArr);
       }
     }
