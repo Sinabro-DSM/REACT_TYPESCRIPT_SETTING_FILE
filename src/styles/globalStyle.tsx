@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import { COLOR } from './index';
 // npm i styled-reset
 // npm i --save-dev @types/styled-components
 
@@ -10,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body{
         font-family:나눔스퀘어;
+        background:${COLOR.backgroundColor};
     }
     *{
         -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;  
