@@ -94,7 +94,7 @@ export const PreviewBox = styled.div`
   justify-items: center;
   margin-top: 30px;
   & img {
-    width: 85%;
+    width: 100%;
     height: 110px;
     object-fit: cover;
     cursor: pointer;
@@ -103,25 +103,35 @@ export const PreviewBox = styled.div`
 `;
 
 export const HashtagBox = styled.div`
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-max-width:100%;
-margin-top:24px;
-& button{
-    margin-top:5px;
-}
-`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 100%;
+  margin-top: 24px;
+  & button {
+    margin-top: 5px;
+  }
+`;
 
 export const SubBtn = styled.button`
-width:100%;
-padding:10px 0;
-font-size:18px;
-color:white;
-font-weight:bold;
-margin-top:70px;
-margin-bottom:130px;
-background-color:${COLOR.mainColor};
-border:none;
-border-radius:5px;
-`
+  width: 100%;
+  padding: 10px 0;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  margin-top: 70px;
+  margin-bottom: 130px;
+  background-color: ${COLOR.mainColor};
+  border: none;
+  border-radius: 5px;
+`;
+
+export const ImgWrapper = styled.div`
+  position: relative;
+  width: 85%;
+  & svg {
+    position: absolute;
+    right: 0;
+    margin: 5px;
+  }
+`;

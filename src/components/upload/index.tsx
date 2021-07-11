@@ -51,7 +51,7 @@ export default function Upload() {
             value={data.hashtag}
           />
         </form>
-        <AddImg />
+        <AddImg callbackEvent={setImgArr} />
         <Description name="description" event={handleEvent} />
         <Input
           pholder="상의 정보를 적어주세요."

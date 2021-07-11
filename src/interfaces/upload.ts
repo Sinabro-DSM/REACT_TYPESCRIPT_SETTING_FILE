@@ -12,3 +12,7 @@ export interface DescirptionProp{
     event : any;
     name : string;
 }
+
+export interface AddImgProps{
+    callbackEvent : any;
+}

@@ -1,22 +1,55 @@
 import * as S from "./styles";
+import { AddImgProps } from "./../../interfaces/upload";
+import { useState } from "react";
+import { Check } from "../../assets";
 
-export default function AddImg() {
+export default function AddImg({ callbackEvent }: AddImgProps) {
+  const [imgArr, setImgArr] = useState<any[]>([]);
+  const [representImg, setRepresentImg] = useState<number>(0);
+  const getSrc = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file: any = event.target.files;
+    callbackEvent((arr: any[]) => [...arr, file[0]]);
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      setImgArr((arr) => [...arr, event.target?.result!.toString()]);
+    };
+    reader.readAsDataURL(file[0]);
+  };
   return (
     <S.InpBox>
+      <input
+        type="file"
+        id="file"
+        style={{ display: "none" }}
+        accept="image/png, image/jpeg, image/jpg"
+        onChange={getSrc}
+      />
       <S.FlexBox>
         <label>
           사진추가
-          <span>(3/10)</span>
+          <span>({imgArr.length}/10)</span>
         </label>
-        <S.AddBtn />
+        <S.AddBtn onClick={() => document.getElementById("file")?.click()} />
       </S.FlexBox>
-      <S.Description>사진을 클릭하면 대표사진으로 등록됩니다.</S.Description>
-      <S.PreviewBox>
-        <img
-          src="http://fpost.co.kr/board/data/editor/1909/c985c35b91df6aac20ae74980335ffb9_1569457220_9471.jpg"
-          alt=""
-        />
-      </S.PreviewBox>
+      {imgArr.length > 0 && (
+        <>
+          <S.Description>
+            사진을 클릭하면 대표사진으로 등록됩니다.
+          </S.Description>
+          <S.PreviewBox>
+            {imgArr.map((e, index) => (
+              <S.ImgWrapper>
+                {index === representImg && <Check />}
+                <img
+                  key={index}
+                  src={e}
+                  onClick={() => setRepresentImg(index)}
+                />
+              </S.ImgWrapper>
+            ))}
+          </S.PreviewBox>
+        </>
+      )}
     </S.InpBox>
   );
 }
