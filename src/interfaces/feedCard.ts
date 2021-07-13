@@ -9,3 +9,7 @@ export interface FeedCardProps {
   userId: number | string;
   feedId: number | string;
 }
+
+export interface FeedListProps {
+  newArr: FeedCardProps[];
+}
