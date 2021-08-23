@@ -9,13 +9,13 @@ const Comments = ({
 CommentProps) => {
   return (
     <S.CommentsBox>
-        <S.Comment>
-          <img src={profileSrc} />
-          <div>
-            <span>{name}</span>
-            <p>{contents}</p>
-          </div>
-        </S.Comment>
+      <S.Comment>
+        <img src={profileSrc} />
+        <div>
+          <span>{name}</span>
+          <p>{contents}</p>
+        </div>
+      </S.Comment>
     </S.CommentsBox>
   );
 };

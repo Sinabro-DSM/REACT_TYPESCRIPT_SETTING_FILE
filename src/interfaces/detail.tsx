@@ -17,3 +17,12 @@ export interface CommentProps {
   contents: string;
   //userId: number | string;
 }
+
+export interface ClothesDetail {
+  // clothesShow: boolean;
+  top: string;
+  bottom: string;
+  shoes: string;
+  show: boolean;
+  close: any;
+}

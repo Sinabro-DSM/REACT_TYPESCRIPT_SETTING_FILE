@@ -19,7 +19,7 @@ export const Sidebar = styled.div`
   position: fixed;
   top: 268px;
   left: calc(36% - (${WIDTH.sub} / 2));
-  z-index: 33;
+  /* z-index: 3; */
   & div {
     display: flex;
     flex-direction: column;
@@ -94,7 +94,6 @@ export const Profile = styled.img`
 
 export const TagBox = styled.div`
   display: flex;
-  margin-top: 14px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -110,6 +109,7 @@ export const PhotoContainer = styled.div`
 
 export const PhotoBox = styled.div`
   width: ${WIDTH.sub};
+  object-fit: contain;
   padding: 14px 0;
   display: flex;
   overflow: hidden;
@@ -121,6 +121,7 @@ export const PhotoBox = styled.div`
 
 export const Photo = styled.img`
   width: ${WIDTH.sub};
+  min-height: 50px;
 `;
 
 export const PrevBtn = styled.button`
@@ -133,12 +134,11 @@ export const PrevBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 99;
+  /* z-index: 3; */
 `;
 
 export const NextBtn = styled(PrevBtn)`
   margin: 0 0 0 25px;
-  z-index: 99;
 `;
 
 export const PhotoPageCount = styled.span`
@@ -149,9 +149,10 @@ export const PhotoPageCount = styled.span`
   margin-bottom: 8px;
 `;
 
-export const ClothesInformation = styled.div`
+export const ClothesInformation = styled.button`
   width: 40px;
   height: 24px;
+  border: none;
   position: absolute;
   right: 16px;
   bottom: 24px;
@@ -160,7 +161,7 @@ export const ClothesInformation = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 99;
+  z-index: 10;
 `;
 
 export const Explanation = styled.div`
@@ -221,4 +222,83 @@ export const Comment = styled.div`
       margin: 10px 0 0;
     }
   }
+`;
+export const ClothesDetailContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+`;
+export const ClothesDetailBackground = styled.div`
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #000000;
+  opacity: 0.4;
+`;
+
+export const ClothesDetail = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 650px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  z-index: 10;
+  & div {
+    width: 400px;
+    & div {
+      width: 386px;
+      margin: 0 10px;
+    }
+  }
+  & h1 {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0 0 22px 8px;
+  }
+  & hr {
+    border: 0;
+    height: 1px;
+    background-color: #e1e1e1;
+  }
+`;
+
+export const Sortation = styled.article`
+  margin: 35px 0;
+  & h6 {
+    font-size: 17px;
+    font-weight: bold;
+  }
+  & p {
+    font-size: 15px;
+    color: #a1a1a1;
+    margin: 14px 0;
+  }
+`;
+
+export const ClothesMore = styled.span`
+  font-size: 12px;
+  color: #a1a1a1;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const Check = styled.button`
+  width: 386px;
+  height: 52px;
+  background-color: ${COLOR.mainColor};
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
 `;
