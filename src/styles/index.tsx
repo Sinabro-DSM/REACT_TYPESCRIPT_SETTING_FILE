@@ -6,6 +6,8 @@ export const COLOR = {
   subTextColor: "#A8A8A8",
 
   blackColor: "000000",
+  
+  backgroundColor : "#F9F9F9"
 };
 
 export const WIDTH = {

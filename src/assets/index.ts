@@ -5,3 +5,6 @@ export { default as ClothesInformation } from "./clothesInformation";
 export { default as Share } from "./share";
 export { default as Prev } from "./prev";
 export { default as Next } from "./next";
+export { default as Check } from "./check"
+export { default as LogoWithout } from "./logowithout.png";
+export { default as ProfileImg } from "./profileImg.png";
