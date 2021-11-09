@@ -26,3 +26,13 @@ export interface ClothesDetail {
   show: boolean;
   close: any;
 }
+
+export interface HeartProps {
+  heart: number | string;
+}
+
+export interface ImgProps {
+  imgSrc: string[];
+  open: any;
+  show: boolean;
+}

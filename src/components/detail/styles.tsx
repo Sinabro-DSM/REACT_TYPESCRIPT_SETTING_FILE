@@ -51,7 +51,7 @@ export const Sidebar = styled.div`
   }
 `;
 
-export const Head = styled.div`
+export const Top = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 14px;

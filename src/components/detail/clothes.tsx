@@ -8,7 +8,7 @@ const Clothes = ({ top, bottom, shoes, show, close }: ClothesDetail) => {
   }
   return (
     <S.ClothesDetailContainer>
-      <S.ClothesDetailBackground />
+      <S.ClothesDetailBackground onClick={close} />
       <S.ClothesDetail>
         <div>
           <h1>의류 정보</h1>
