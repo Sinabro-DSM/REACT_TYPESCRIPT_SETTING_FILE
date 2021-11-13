@@ -50,6 +50,7 @@ const Signin = () => {
             <InputBox onChange={idChange} title="Email" placeholder="이메일을 입력해주세요." />
             <InputBox onChange={pwChange} title="Password" placeholder="비밀번호를 입력해 주세요." />
             <Button title="SIGN IN" />
+            <S.GoSign>계정이 없으신가요?</S.GoSign>
         </S.Wrapper>
     )
 }
