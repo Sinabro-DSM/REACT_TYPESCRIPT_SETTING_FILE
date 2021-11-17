@@ -1,13 +1,14 @@
 import React from "react";
 import * as S from "./styles";
-import headerProps from "../../../interfaces/header";
 import { Logo, Search } from "../../../assets/index";
+import { useHistory } from "react-router";
 
-const Header = ({ imgSrc }: headerProps) => {
+const Header = () => {
+  const history = useHistory();
   return (
     <S.Header>
       <div>
-        <S.Logo src={Logo}></S.Logo>
+        <S.Logo src={Logo} onClick={() => history.push("/")} />
         <S.SearchBar>
           <div>
             <Search />
@@ -15,7 +16,10 @@ const Header = ({ imgSrc }: headerProps) => {
           <input placeholder={"무엇을 찾으시나요?"} />
         </S.SearchBar>
       </div>
-      <S.Profile src={imgSrc}></S.Profile>
+      <S.Profile
+        src="https://img.hankyung.com/photo/202101/BF.25162383.1.jpg"
+        onClick={() => history.push("/profile")}
+      />
     </S.Header>
   );
 };

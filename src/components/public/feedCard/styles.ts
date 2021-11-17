@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   transition: 0.3s;
   cursor: pointer;
   &:hover {
-    box-shadow: 0px 3px 10px #fff1bb;
+    transform: translateY(-10px);
   }
 `;
 

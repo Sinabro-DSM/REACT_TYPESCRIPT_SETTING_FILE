@@ -5,19 +5,17 @@ import { WIDTH, COLOR } from "../../styles";
 export const Wrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const ListContainer = styled.div`
   width: ${WIDTH.main};
   position: relative;
-  padding-top: 100px;
 `;
 
 export const TopBar = styled.div`
   width: 100%;
-  height: 90px;
-  position: fixed;
   background-color: ${COLOR.backgroundColor};
   display: flex;
   justify-content: center;

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import FeedCardList from "../public/feedCardList";
 import * as S from "./styles";
 
 export default function Feed() {
+  const history = useHistory();
   const arr = [
     {
       profileSrc:
@@ -172,7 +174,7 @@ export default function Feed() {
               좋아요순
             </S.Li>
           </ul>
-          <button>글쓰기</button>
+          <button onClick={() => history.push("/upload")}>글쓰기</button>
         </S.TopBarContainer>
       </S.TopBar>
       <S.ListContainer>
