@@ -3,6 +3,7 @@ import React from "react";
 import { Heart } from "../../../assets";
 import { FeedCardProps } from "./../../../interfaces/feedCard";
 import Hashtag from "../hashtag/hashtag";
+import { useHistory } from "react-router";
 
 export default function FeedCard({
   profileSrc,
@@ -15,8 +16,9 @@ export default function FeedCard({
   userId,
   feedId,
 }: FeedCardProps) {
+  const history = useHistory();
   return (
-    <S.Wrapper>
+    <S.Wrapper onClick={() => history.push("/detail")}>
       <S.ProfileBox>
         <img src={profileSrc} />
         <span>{name}</span>
