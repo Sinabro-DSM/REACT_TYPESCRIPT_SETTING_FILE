@@ -12,3 +12,10 @@ export const Wrapper = styled.section`
 export const Logo = styled.img`
     width: 150px;
 `
+
+export const GoSign = styled.p`
+    text-decoration: underline;
+    color: #A1A1A1;
+    font-size: 14px;
+    margin-top: 40px;
+`
