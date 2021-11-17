@@ -12,13 +12,13 @@ interface ColorLevelWrapProps {
 }
 
 export const ColorLevelWrap = styled.div<ColorLevelWrapProps>`
-  height: 700px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 6px;
-  transform: ${({ deg }) => `rotate(${deg * 20}deg)`};
+  transform: ${({ deg }) => `rotate(${deg * 20}deg)`} translateY(-250px);
   position: absolute;
+  margin-top: 250px;
 `;
 
 interface ColorSquareProps {

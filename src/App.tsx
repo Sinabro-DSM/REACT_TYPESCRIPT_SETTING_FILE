@@ -10,6 +10,7 @@ import Signin from "./components/login/signin";
 import Signup from "./components/login/signup/index";
 import Profile from "./components/mypage/profile";
 import MyCloset from "./components/mypage/myCloset/index";
+import ChooseColor from "./components/chooseColor";
 
 export default function App() {
   return (
@@ -17,7 +18,8 @@ export default function App() {
       <GlobalStyle />
       <Header />
       <Switch>
-        <Route exact path="/" component={Feed} />
+        <Route exact path="/" component={ChooseColor} />
+        <Route path="/feed" component={Feed} />
         <Route path="/detail" component={Detail} />
         <Route path="/upload" component={Upload} />
         <Route path="/signin" component={Signin} />

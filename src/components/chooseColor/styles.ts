@@ -1,12 +1,18 @@
 import styled from "styled-components";
-import { COLOR } from "./../../styles/index";
+import { COLOR, WIDTH } from "./../../styles/index";
+
+export const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
 export const Container = styled.div`
-  width: 100%;
+  width: ${WIDTH.main};
   height: 100%;
   display: flex;
   justify-content: space-between;
-  padding-top: 110px;
+  padding-top: 50px;
 `;
 
 export const Information = styled.div`
