@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 750px;
+  width: 700px;
   display: flex;
   position: relative;
   justify-content: center;
@@ -12,7 +12,7 @@ interface ColorLevelWrapProps {
 }
 
 export const ColorLevelWrap = styled.div<ColorLevelWrapProps>`
-  height: 750px;
+  height: 700px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -26,9 +26,10 @@ interface ColorSquareProps {
 }
 
 export const ColorSquare = styled.button<ColorSquareProps>`
-  width: 35px;
-  height: 35px;
+  width: 33px;
+  height: 33px;
   border-radius: 5px;
   background-color: ${({ background }) => background};
   border: none;
+  cursor: pointer;
 `;
