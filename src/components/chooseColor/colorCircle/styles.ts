@@ -32,4 +32,9 @@ export const ColorSquare = styled.button<ColorSquareProps>`
   background-color: ${({ background }) => background};
   border: none;
   cursor: pointer;
+  transition: 0.3s;
+  border: 2px solid transparent;
+  &:hover {
+    border: 2px solid black;
+  }
 `;
