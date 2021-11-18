@@ -11,7 +11,6 @@ export const Container = styled.div`
   width: ${WIDTH.sub};
   display: flex;
   flex-direction: column;
-  margin: 50px;
   height: auto;
 `;
 

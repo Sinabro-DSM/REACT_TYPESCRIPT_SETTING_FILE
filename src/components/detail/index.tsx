@@ -1,24 +1,12 @@
 import React, { useState } from "react";
 import * as S from "./styles";
-import { PostProps } from "../../interfaces/detail";
 import Comments from "./comments";
 import Hashtag from "../public/hashtag/hashtag";
 import Clothes from "./clothes";
 import Sidebar from "./sidebar";
 import PhotoContatiner from "./photoContatiner";
 
-const Detail = ({
-  profileSrc,
-  imgSrc,
-  time,
-  title,
-  tag,
-  contents,
-  commentCount,
-  heart,
-}: //userId,
-//postId,
-PostProps) => {
+const Detail = () => {
   const [modalShow, setModalShow] = useState<boolean>(false);
 
   const showModal = () => {
@@ -29,27 +17,35 @@ PostProps) => {
     <>
       <S.Wapper>
         <S.Container>
-          <Sidebar heart={heart} />
+          <Sidebar heart={6} />
           <S.Top>
             <S.PostInformation>
               <span>제목</span>
-              <h1>{title}</h1>
-              <span>{time} days ago</span>
+              <h1>제목</h1>
+              <span>6 days ago</span>
               <S.TagBox>
-                {tag.map((e: string, index: number) => (
-                  <Hashtag key={index} contents={e} />
-                ))}
+                {["지원", "석훈", "예진", "아연"].map(
+                  (e: string, index: number) => (
+                    <Hashtag key={index} contents={e} />
+                  )
+                )}
               </S.TagBox>
             </S.PostInformation>
-            <S.Profile src={profileSrc} />
+            <S.Profile src="" />
           </S.Top>
-          <PhotoContatiner imgSrc={imgSrc} open={showModal} show={modalShow} />
+          <PhotoContatiner
+            imgSrc={[
+              "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/cbdef037365169.573db7853cebb.jpg",
+            ]}
+            open={showModal}
+            show={modalShow}
+          />
           <S.Explanation>
             <h6>설명</h6>
-            <p>{contents}</p>
+            <p>ㅁㄴㅇㄹㅁㅇㄴㄹ</p>
           </S.Explanation>
           <S.CommentsBox>
-            <p>댓글 {commentCount}개</p>
+            <p>댓글 8개</p>
             <input
               type="text"
               placeholder="댓글 남기기 (엔터를 누르면 등록됩니다.)"
