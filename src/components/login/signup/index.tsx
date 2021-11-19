@@ -5,9 +5,6 @@ import InputBox from "../input/index";
 import {requestWithAccessToken, requestWithOutAccessToken} from "../../../utils/axios";
 import Button from "../button/index";
 import { useHistory } from "react-router";
-import axios from "axios";
-import { url } from "inspector";
-import { stringify } from "querystring";
 
 interface SignupProps {
   id: string;
@@ -110,11 +107,11 @@ const Signup = () => {
     })
   }
 
-  
+
 
   return (
     <S.Wrapper>
-      <S.Logo src={Logo} onClick={signupBtn} />
+      <S.Logo src={Logo} />
       <InputBox
         onChange={idChange}
         title="Email"
@@ -123,14 +120,15 @@ const Signup = () => {
       <InputBox
         onChange={nameChange}
         title="Nickname"
-        placeholder="사용할 닉네임을 입력하세요."
+        placeholder="사용할 닉네임을 입력하세요. (2글자 ~ 8글자)"
       />
       <InputBox
         onChange={pwChange}
         title="Password"
-        placeholder=" 사용할 비밀번호를 입력하세요."
+        placeholder=" 사용할 비밀번호를 입력하세요. (8글자 이상)"
+        type="password"
       />
-      <Button title="SIGN UP" />
+      <S.GoButton onClick={signupBtn}>SIGN UP</S.GoButton>
     </S.Wrapper>
   );
 };

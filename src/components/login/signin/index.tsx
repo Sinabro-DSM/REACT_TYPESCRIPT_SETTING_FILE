@@ -65,7 +65,7 @@ const Signin = () => {
 
   return (
     <S.Wrapper>
-      <S.Logo onClick={signinBtn} src={Logo} />
+      <S.Logo src={Logo} />
       <InputBox
         onChange={idChange}
         title="Email"
@@ -75,8 +75,9 @@ const Signin = () => {
         onChange={pwChange}
         title="Password"
         placeholder="비밀번호를 입력해 주세요."
+        type="password"
       />
-      <Button title="SIGN IN" />
+      <S.GoButton onClick={signinBtn}>SIGN IN</S.GoButton>
       <S.GoSign onClick={() => history.push("/signup")}>
         계정이 없으신가요?
       </S.GoSign>
