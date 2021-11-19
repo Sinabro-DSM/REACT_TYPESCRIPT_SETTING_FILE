@@ -5,6 +5,7 @@ interface AxiosProps {
   url: string;
   headers: any;
   data: any;
+  msg?: string;
 }
 
 const BASE_URL = "http://15.165.250.252:3001";
@@ -15,6 +16,7 @@ export const requestWithOutAccessToken = ({
   url,
   headers,
   data,
+  msg
 }: AxiosProps) => {
   return axios({
     method,
@@ -26,6 +28,7 @@ export const requestWithOutAccessToken = ({
       return res.data;
     })
     .catch((err) => {
+      console.log(`${msg} 에러`, err)
       throw new Error(err);
     });
 };
@@ -35,6 +38,7 @@ export const requestWithAccessToken = ({
   url,
   headers,
   data,
+  msg
 }: AxiosProps) => {
   return axios({
     method,
@@ -46,6 +50,7 @@ export const requestWithAccessToken = ({
       return res.data;
     })
     .catch((err) => {
+      console.log(`${msg} 에러`, err)
       throw new Error(err);
     });
 };

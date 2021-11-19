@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import * as S from "./styles";
+import * as S from "../styles";
 import Logo from "../../../assets/logo.png";
 import InputBox from "../input/index";
 import Button from "../button/index";

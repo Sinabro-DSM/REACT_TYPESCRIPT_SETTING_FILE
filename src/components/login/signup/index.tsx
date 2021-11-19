@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import * as S from "../signin/styles";
+import * as S from "../styles";
 import Logo from "../../../assets/logo.png";
 import InputBox from "../input/index";
 import {requestWithAccessToken, requestWithOutAccessToken} from "../../../utils/axios";
@@ -97,13 +97,15 @@ const Signup = () => {
             email: id,
             password,
             nickname
-        }
+        },
+        msg:"회원가입"
     }).then((res) => {
         console.log(res)
         alert("회원가입 완료. 로그인 페이지로 이동합니다.");
         history.push("/signin");
     }).catch((err) => {
-        console.log(err);
+      alert("회원가입을 실패하셨습니다.")
+      return;
     })
   }
 
