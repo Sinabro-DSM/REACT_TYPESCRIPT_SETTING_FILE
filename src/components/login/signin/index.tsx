@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import * as S from "./styles";
+import * as S from "../styles";
 import Logo from "../../../assets/logo.png";
 import InputBox from "../input/index";
 import Button from "../button/index";
 import { useHistory } from "react-router";
+import {requestWithAccessToken, requestWithOutAccessToken} from "../../../utils/axios";
 
 interface SigninProps {
   id: string;
@@ -43,6 +44,25 @@ const Signin = () => {
     console.log(data);
   };
 
+  const signinBtn = async(e: any) => {
+    await requestWithOutAccessToken({
+      method: "POST",
+      url: "/auth/login",
+      headers: {},
+      data: {
+        "email": id,
+        "password": password
+      }
+    }).then((res) => {
+      console.log(res.data);
+      alert("로그인 성공 메인페이지로 이동합니다.");
+      history.push("/");
+    }).catch((err) => {
+      console.log(err);
+      alert("아이디나 비밀번호를 잘못 입력하셨습니다.");
+    })
+  }
+
   return (
     <S.Wrapper>
       <S.Logo src={Logo} />
@@ -55,8 +75,9 @@ const Signin = () => {
         onChange={pwChange}
         title="Password"
         placeholder="비밀번호를 입력해 주세요."
+        type="password"
       />
-      <Button title="SIGN IN" />
+      <S.GoButton onClick={signinBtn}>SIGN IN</S.GoButton>
       <S.GoSign onClick={() => history.push("/signup")}>
         계정이 없으신가요?
       </S.GoSign>
