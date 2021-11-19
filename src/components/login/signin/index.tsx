@@ -55,6 +55,7 @@ const Signin = () => {
       }
     }).then((res) => {
       console.log(res.data);
+      localStorage.setItem("token", res.token);
       alert("로그인 성공 메인페이지로 이동합니다.");
       history.push("/");
     }).catch((err) => {
