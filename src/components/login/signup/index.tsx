@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import * as S from "../signin/styles";
+import React, { useEffect, useState } from "react";
+import * as S from "../styles";
 import Logo from "../../../assets/logo.png";
 import InputBox from "../input/index";
+import {requestWithAccessToken, requestWithOutAccessToken} from "../../../utils/axios";
 import Button from "../button/index";
+import { useHistory } from "react-router";
 
 interface SignupProps {
   id: string;
@@ -11,8 +13,8 @@ interface SignupProps {
 }
 
 interface CheckProps {
-  emailCk: boolean;
-  passwordCk: boolean;
+  nameConfirm: boolean;
+  passwordConfirm: boolean;
 }
 
 const Signup = () => {
@@ -22,14 +24,16 @@ const Signup = () => {
     nickname: "",
   });
 
-  const { id, password, nickname } = data;
-
   const [check, setCheck] = useState<CheckProps>({
-    emailCk: false,
-    passwordCk: false,
+    nameConfirm: false,
+    passwordConfirm: false,
   });
 
-  const { emailCk, passwordCk } = check;
+  const history = useHistory();
+
+  const { id, password, nickname} = data;
+
+  const {nameConfirm, passwordConfirm} = check;
 
   const idChange = (e: any) => {
     setData({
@@ -52,6 +56,61 @@ const Signup = () => {
     });
   };
 
+  const emailCheck = () => {
+    if(id.indexOf("@") == -1){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
+  const nameCheck = () => {
+    if(nickname.length < 2 || nickname.length > 8) {
+      alert("이름은 두글자 이상 여덟글자 이하입니다.");
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
+  const passwordCheck = () => {
+    if(password.length < 8) {
+      alert("비밀번호는 여덟글자 이상입니다.");
+      return false;
+    }
+    else{
+      return true;
+    }
+  } 
+
+  const signupBtn = async (e: any) => {
+    nameCheck();
+    passwordCheck();
+
+    await requestWithOutAccessToken({
+        method: "post",
+        url: "/auth/signup",
+        headers: {},
+        data: {
+            email: id,
+            password,
+            nickname
+        },
+        msg:"회원가입"
+    }).then((res) => {
+        console.log(res)
+        alert("회원가입 완료. 로그인 페이지로 이동합니다.");
+        history.push("/signin");
+    }).catch((err) => {
+      alert("회원가입을 실패하셨습니다.")
+      return;
+    })
+  }
+
+
+
   return (
     <S.Wrapper>
       <S.Logo src={Logo} />
@@ -63,18 +122,15 @@ const Signup = () => {
       <InputBox
         onChange={nameChange}
         title="Nickname"
-        placeholder="사용할 닉네임을 입력하세요."
+        placeholder="사용할 닉네임을 입력하세요. (2글자 ~ 8글자)"
       />
       <InputBox
         onChange={pwChange}
         title="Password"
-        placeholder=" 사용할 비밀번호를 입력하세요."
+        placeholder=" 사용할 비밀번호를 입력하세요. (8글자 이상)"
+        type="password"
       />
-      <InputBox
-        title="Password check"
-        placeholder="비밀번호를 확인해 주세요."
-      />
-      <Button title="SIGN UP" />
+      <S.GoButton onClick={signupBtn}>SIGN UP</S.GoButton>
     </S.Wrapper>
   );
 };
