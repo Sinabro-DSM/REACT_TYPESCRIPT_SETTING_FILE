@@ -3,7 +3,6 @@ import * as S from "../styles";
 import Logo from "../../../assets/logo.png";
 import InputBox from "../input/index";
 import {requestWithAccessToken, requestWithOutAccessToken} from "../../../utils/axios";
-import Button from "../button/index";
 import { useHistory } from "react-router";
 
 interface SignupProps {
@@ -85,11 +84,11 @@ const Signup = () => {
     }
   } 
 
-  const signupBtn = async (e: any) => {
+  const signupBtn =  () => {
     nameCheck();
     passwordCheck();
 
-    await requestWithOutAccessToken({
+   requestWithOutAccessToken({
         method: "post",
         url: "/auth/signup",
         headers: {},
@@ -104,27 +103,36 @@ const Signup = () => {
         alert("회원가입 완료. 로그인 페이지로 이동합니다.");
         history.push("/signin");
     }).catch((err) => {
+      console.log(err.response);
       alert("회원가입을 실패하셨습니다.")
+
       return;
     })
   }
 
-
+  const submit = (e: any) => {
+    if(e.key === 'Enter'){
+      signupBtn();
+    }
+  }
 
   return (
     <S.Wrapper>
       <S.Logo src={Logo} />
       <InputBox
+        onKeyPress={submit}
         onChange={idChange}
         title="Email"
         placeholder="이메일을 입력해주세요."
       />
       <InputBox
+        onKeyPress={submit}
         onChange={nameChange}
         title="Nickname"
         placeholder="사용할 닉네임을 입력하세요. (2글자 ~ 8글자)"
       />
       <InputBox
+        onKeyPress={submit} 
         onChange={pwChange}
         title="Password"
         placeholder=" 사용할 비밀번호를 입력하세요. (8글자 이상)"

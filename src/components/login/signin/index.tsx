@@ -65,15 +65,24 @@ const Signin = () => {
     })
   }
 
+  const submit = (e: any) => {
+    if(e.key === 'Enter'){
+      signinBtn(e);
+    }
+  }
+
+
   return (
     <S.Wrapper>
       <S.Logo src={Logo} />
       <InputBox
+        onKeyPress={submit}
         onChange={idChange}
         title="Email"
         placeholder="이메일을 입력해주세요."
       />
       <InputBox
+        onKeyPress={submit}
         onChange={pwChange}
         title="Password"
         placeholder="비밀번호를 입력해 주세요."
