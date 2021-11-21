@@ -4,7 +4,7 @@ import Logo from "../../../assets/logo.png";
 import InputBox from "../input/index";
 import Button from "../button/index";
 import { useHistory } from "react-router";
-import {requestWithAccessToken, requestWithOutAccessToken} from "../../../utils/axios";
+import {ACCESS_TOKEN, requestWithOutAccessToken} from "../../../utils/axios";
 
 interface SigninProps {
   id: string;
@@ -55,7 +55,7 @@ const Signin = () => {
       }
     }).then((res) => {
       console.log(res);
-      localStorage.setItem("token", res.token);
+      localStorage.setItem(ACCESS_TOKEN, res.token);
       localStorage.setItem("userId", res.userId)
       alert("로그인 성공 메인페이지로 이동합니다.");
       history.push("/");
