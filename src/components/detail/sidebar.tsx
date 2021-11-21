@@ -3,12 +3,21 @@ import * as S from "./styles";
 import { HeartProps } from "../../interfaces/detail";
 import { COLOR } from "../../styles/index";
 import { Share, Heart } from "../../assets/index";
+import {
+  ACCESS_TOKEN,
+  requestWithAccessToken,
+  requestWithOutAccessToken,
+} from "../../utils/axios";
 
-const Sidebar = ({ heart }: HeartProps) => {
-  const copyUrlRef: MutableRefObject<any> = useRef();
-  const heartRef: MutableRefObject<any> = useRef();
+const Sidebar = ({ match }: any) => {
+  const postId = match?.params?.id;
+  const userId = localStorage.getItem("userId");
+
+  const copyUrlRef = useRef<any>(null);
+  const heartRef = useRef<any>(null);
 
   const [heartToggle, setHeartToggle] = React.useState<boolean>(false);
+  const [hangerCnt, setHeart] = useState<number | string | undefined>();
 
   const copyUrl = (e: any) => {
     if (!document.queryCommandSupported("copy")) {
@@ -21,22 +30,84 @@ const Sidebar = ({ heart }: HeartProps) => {
     }
   };
 
+  const requesteHeartGet = (postId: number) => {
+    requestWithOutAccessToken({
+      method: "get",
+      url: `/post/hanger/${postId}`,
+      headers: {},
+      data: {
+        postId,
+      },
+    })
+      .then((res) => {
+        setHeart(res);
+      })
+      .catch((err) => {});
+  };
+
+  const requesteHeartPost = (
+    postId: number,
+    userId: number | string | null
+  ) => {
+    requestWithAccessToken({
+      method: "post",
+      url: `/post/hanger`,
+      headers: { authorization: "Bearer " + ACCESS_TOKEN },
+      data: {
+        postId,
+        userId,
+      },
+    })
+      .then((res) => {
+        setHeartToggle(true);
+        heartRef.current.style.backgroundColor = COLOR.subColor;
+        requesteHeartGet(postId);
+      })
+      .catch((err) => {
+        alert("로그인을 해주세요.");
+      });
+  };
+
+  const requesteHeartDelete = (
+    postId: number,
+    userId: number | string | null
+  ) => {
+    requestWithAccessToken({
+      method: "delete",
+      url: `/post/hanger`,
+      headers: { authorization: "Bearer " + ACCESS_TOKEN },
+      data: {
+        postId,
+        userId,
+      },
+    })
+      .then((res) => {
+        setHeartToggle(false);
+        heartRef.current.style.backgroundColor = COLOR.mainColor;
+        requesteHeartGet(postId);
+      })
+      .catch((err) => {});
+  };
+
   const clickHeart = () => {
     if (heartToggle === false) {
-      setHeartToggle(true);
-      heartRef.current.style.backgroundColor = COLOR.subColor;
+      requesteHeartPost(postId, userId);
     } else {
-      setHeartToggle(false);
-      heartRef.current.style.backgroundColor = COLOR.mainColor;
+      requesteHeartDelete(postId, userId);
     }
   };
+
+  useEffect(() => {
+    requesteHeartGet(postId);
+  }, []);
+
   return (
     <S.Sidebar>
       <div>
         <div ref={heartRef} onClick={clickHeart}>
           <Heart size="24" color="#ffffff" />
         </div>
-        <span>{heart}개</span>
+        <span>{hangerCnt}개</span>
       </div>
       <div>
         <div onClick={copyUrl}>
