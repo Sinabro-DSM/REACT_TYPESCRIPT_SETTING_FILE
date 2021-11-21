@@ -21,5 +21,8 @@ export const Wrapper = styled.div`
             border-radius: 5px;
         }
     }
+    width: 100%;
+    display: flex;
+    justify-content: center;
 `
 
