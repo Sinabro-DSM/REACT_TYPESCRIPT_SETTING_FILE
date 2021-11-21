@@ -43,7 +43,7 @@ export const requestWithAccessToken = ({
   return axios({
     method,
     url: BASE_URL + url,
-    headers: { ...headers, authorization: "Bearer " + ACCESS_TOKEN },
+    headers: { ...headers, authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}` },
     data,
   })
     .then((res) => {
