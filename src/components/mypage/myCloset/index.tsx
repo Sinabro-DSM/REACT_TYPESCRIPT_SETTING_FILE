@@ -15,7 +15,7 @@ const MyCloset = () => {
       data:{}
     }).then((res) => {
       console.log(res);
-      // setArr(res);
+      setArr(res);
     }).catch((err) => {
       console.log(err);
     });
