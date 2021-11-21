@@ -20,7 +20,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={ChooseColor} />
         <Route path="/feed" component={Feed} />
-        <Route path="/detail" component={Detail} />
+        <Route path="/detail/id=:id" component={Detail} />
         <Route path="/upload" component={Upload} />
         <Route path="/signin" component={Signin} />
         <Route path="/signup" component={Signup} />
