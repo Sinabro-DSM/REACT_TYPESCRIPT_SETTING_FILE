@@ -54,7 +54,9 @@ const Signin = () => {
         "password": password
       }
     }).then((res) => {
-      console.log(res.data);
+      console.log(res);
+      localStorage.setItem("token", res.token);
+      localStorage.setItem("userId", res.userId)
       alert("로그인 성공 메인페이지로 이동합니다.");
       history.push("/");
     }).catch((err) => {
