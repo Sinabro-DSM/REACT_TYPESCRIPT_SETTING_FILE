@@ -1,11 +1,35 @@
-import React from "react";
-import { ClothesDetail } from "../../interfaces/detail";
+import React, { useEffect, useState } from "react";
+import { ClothesDetail, ClothesModal } from "../../interfaces/detail";
 import * as S from "./styles";
+import { requestWithOutAccessToken } from "../../utils/axios";
 
-const Clothes = ({ top, bottom, shoes, show, close }: ClothesDetail) => {
+const Clothes = ({ show, close }: ClothesModal, { match }: any) => {
+  const [clothes, setClothes] = useState<ClothesDetail>();
+  const postId = match?.params?.id;
+
+  const requesteCloset = (postId: number) => {
+    requestWithOutAccessToken({
+      method: "get",
+      url: `/post/closet/${postId}`,
+      headers: {},
+      data: {},
+    })
+      .then((res) => {
+        setClothes(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    requesteCloset(postId);
+  }, []);
+
   if (!show) {
     return null;
   }
+
   return (
     <S.ClothesDetailContainer>
       <S.ClothesDetailBackground onClick={close} />
@@ -16,19 +40,19 @@ const Clothes = ({ top, bottom, shoes, show, close }: ClothesDetail) => {
           <div>
             <S.Sortation>
               <h6>상의</h6>
-              <p>{top}</p>
+              <p>{clothes?.topInfo}</p>
               <S.ClothesMore> 더 알아보기 ＞</S.ClothesMore>
             </S.Sortation>
             <hr />
             <S.Sortation>
               <h6>하의</h6>
-              <p>{bottom}</p>
+              <p>{clothes?.bottomInfo}</p>
               <S.ClothesMore> 더 알아보기 ＞</S.ClothesMore>
             </S.Sortation>
             <hr />
             <S.Sortation>
               <h6>신발</h6>
-              <p>{shoes}</p>
+              <p>{clothes?.shoesInfo}</p>
               <S.ClothesMore> 더 알아보기 ＞</S.ClothesMore>
             </S.Sortation>
             <S.Check onClick={close}>확인</S.Check>
