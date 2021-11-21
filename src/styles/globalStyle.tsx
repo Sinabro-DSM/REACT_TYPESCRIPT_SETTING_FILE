@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import { COLOR } from "./index";
 // npm i styled-reset
 // npm i --save-dev @types/styled-components
 
@@ -10,13 +9,11 @@ const GlobalStyle = createGlobalStyle`
         scroll-behavior: smooth;
     }
     body{
-        background:${COLOR.backgroundColor}; 
-        font-family: 'NanumSquare', sans-serif;
-        padding-top:120px;
+        font-family:나눔스퀘어;
     }
     *{
         -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;  
-        font-family: 'NanumSquare', sans-serif;
+        color:white;
     }
     a{
         text-decoration:none;
@@ -31,22 +28,12 @@ const GlobalStyle = createGlobalStyle`
     select{
         outline:none;
     }
-    input,button,select{
-        background:none;
-    }
     ul{
         list-style:none;
     }
     input:-webkit-autofill { 
         box-shadow: 0 0 0 30px transparent inset ; 
     } 
-    img{
-        object-fit:cover;
-    }
-    p{
-        padding:0;
-        margin:0;
-    }
 `;
 
 export default GlobalStyle;
