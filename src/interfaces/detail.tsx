@@ -1,38 +1,35 @@
-export interface PostProps {
-  profileSrc: string;
-  imgSrc: string[];
+export interface DetailProps {
+  picture: string[] | undefined;
   time: string | number;
   title: string;
   tag: string[];
   contents: string;
   commentCount: number | string;
-  heart: number | string;
-  //userId: number | string;
-  //postId: number | string;
+  henger: number | string;
 }
 
 export interface CommentProps {
-  profileSrc: string;
-  name: string;
-  contents: string;
-  //userId: number | string;
+  user_id: string;
+  comment: string;
 }
 
-export interface ClothesDetail {
-  // clothesShow: boolean;
-  top: string;
-  bottom: string;
-  shoes: string;
+export interface ClothesModal {
   show: boolean;
   close: any;
 }
 
+export interface ClothesDetail{
+  topInfo: string | undefined;
+  bottomInfo: string | undefined;
+  shoesInfo: string | undefined;
+}
+
 export interface HeartProps {
-  heart: number | string;
+  hangerCnt: number | string | undefined;
 }
 
 export interface ImgProps {
-  imgSrc: string[];
+  picture: string[];
   open: any;
   show: boolean;
 }
