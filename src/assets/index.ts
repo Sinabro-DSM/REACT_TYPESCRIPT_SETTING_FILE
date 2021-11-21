@@ -8,3 +8,4 @@ export { default as Next } from "./next";
 export { default as Check } from "./check";
 export { default as LogoWithout } from "./logowithout.png";
 export { default as ProfileImg } from "./profileImg.png";
+export { default as BaseProfile } from "./BaseProfile.png";
