@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { RefObject, useEffect, useRef, useState } from "react";
 import { ClothesDetail, ClothesModal } from "../../interfaces/detail";
 import * as S from "./styles";
 import { requestWithOutAccessToken } from "../../utils/axios";
@@ -6,6 +6,9 @@ import { requestWithOutAccessToken } from "../../utils/axios";
 const Clothes = ({ show, close }: ClothesModal, { match }: any) => {
   const [clothes, setClothes] = useState<ClothesDetail>();
   const postId = match?.params?.id;
+  const topRef = useRef<HTMLDivElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
+  const shoesRef = useRef<HTMLDivElement>(null);
 
   const requesteCloset = (postId: number) => {
     requestWithOutAccessToken({
@@ -30,6 +33,12 @@ const Clothes = ({ show, close }: ClothesModal, { match }: any) => {
     return null;
   }
 
+  const moveToSearch = (clothes: any) => {
+    window.open(
+      `https://www.google.com/search?q=${clothes.current?.innerHTML}`
+    );
+  };
+
   return (
     <S.ClothesDetailContainer>
       <S.ClothesDetailBackground onClick={close} />
@@ -40,20 +49,26 @@ const Clothes = ({ show, close }: ClothesModal, { match }: any) => {
           <div>
             <S.Sortation>
               <h6>상의</h6>
-              <p>{clothes?.topInfo}</p>
-              <S.ClothesMore> 더 알아보기 ＞</S.ClothesMore>
+              <p ref={topRef}>{clothes?.topInfo}</p>
+              <S.ClothesMore onClick={(e) => moveToSearch(topRef)}>
+                더 알아보기 ＞
+              </S.ClothesMore>
             </S.Sortation>
             <hr />
             <S.Sortation>
               <h6>하의</h6>
-              <p>{clothes?.bottomInfo}</p>
-              <S.ClothesMore> 더 알아보기 ＞</S.ClothesMore>
+              <p ref={bottomRef}>{clothes?.bottomInfo}</p>
+              <S.ClothesMore onClick={(e) => moveToSearch(bottomRef)}>
+                더 알아보기 ＞
+              </S.ClothesMore>
             </S.Sortation>
             <hr />
             <S.Sortation>
               <h6>신발</h6>
-              <p>{clothes?.shoesInfo}</p>
-              <S.ClothesMore> 더 알아보기 ＞</S.ClothesMore>
+              <p ref={shoesRef}>{clothes?.shoesInfo}</p>
+              <S.ClothesMore onClick={(e) => moveToSearch(shoesRef)}>
+                더 알아보기 ＞
+              </S.ClothesMore>
             </S.Sortation>
             <S.Check onClick={close}>확인</S.Check>
           </div>

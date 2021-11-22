@@ -289,6 +289,7 @@ export const ClothesMore = styled.span`
   color: #a1a1a1;
   display: flex;
   justify-content: flex-end;
+  cursor: pointer;
 `;
 
 export const Check = styled.button`
