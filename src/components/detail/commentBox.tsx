@@ -69,7 +69,7 @@ const CommentBox = ({ match }: any) => {
       {comments.map((data: any) => {
         return (
           <Comments
-            //profileSrc="https://www.fashionseoul.com/wp-content/uploads/2017/07/20170720_hiphop-6.jpg" // 기본이미지 가져오기
+            //profileSrc={BaseProfile}
             user_id={data.user_id}
             comment={data.comment}
           />

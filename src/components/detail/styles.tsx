@@ -87,7 +87,7 @@ export const Profile = styled.img`
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid #707070;
+  border: 1px solid #e6e6e6;
   cursor: pointer;
 `;
 
@@ -100,10 +100,10 @@ export const TagBox = styled.div`
 
 export const PhotoContainer = styled.div`
   display: flex;
-  width: calc(${WIDTH.sub} + 140px);
+  //width: calc(${WIDTH.sub} + 140px);
   align-items: center;
-  position: relative;
-  left: -70px;
+  //position: relative;
+  //left: -70px;
 `;
 
 export const PhotoBox = styled.div`

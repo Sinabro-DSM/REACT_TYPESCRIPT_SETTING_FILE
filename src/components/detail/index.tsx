@@ -11,6 +11,7 @@ import {
 } from "../../utils/axios";
 import { DetailProps, ImgProps } from "../../interfaces/detail";
 import CommentBox from "./commentBox";
+import { BaseProfile } from "../../assets";
 
 const Detail = ({ match }: any) => {
   const postId = match?.params?.id;
@@ -58,10 +59,10 @@ const Detail = ({ match }: any) => {
                 ))}
               </S.TagBox>
             </S.PostInformation>
-            <S.Profile src="" />
+            <S.Profile src={BaseProfile} />
           </S.Top>
           <PhotoContatiner
-            picture={/* postContent?.picture */ []}
+            picture={postContent?.picture}
             open={showModal}
             show={modalShow}
           />

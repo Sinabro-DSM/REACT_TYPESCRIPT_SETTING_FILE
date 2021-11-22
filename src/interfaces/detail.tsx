@@ -1,5 +1,5 @@
 export interface DetailProps {
-  picture: string[] | undefined;
+  picture: string | undefined;
   time: string | number;
   title: string;
   tag: string[];
@@ -9,6 +9,7 @@ export interface DetailProps {
 }
 
 export interface CommentProps {
+  //profileSrc: string;
   user_id: string;
   comment: string;
 }
@@ -18,7 +19,7 @@ export interface ClothesModal {
   close: any;
 }
 
-export interface ClothesDetail{
+export interface ClothesDetail {
   topInfo: string | undefined;
   bottomInfo: string | undefined;
   shoesInfo: string | undefined;
@@ -29,7 +30,7 @@ export interface HeartProps {
 }
 
 export interface ImgProps {
-  picture: string[];
+  picture: string | undefined;
   open: any;
   show: boolean;
 }
