@@ -1,6 +1,18 @@
 import styled from "styled-components";
 import { WIDTH, COLOR } from "../../../styles/index";
 
+export const HeaderBox = styled.div`
+  width: 100%;
+  height: 85px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.1);
+`;
+
 export const Header = styled.div`
   width: ${WIDTH.main};
   height: 85px;
@@ -8,11 +20,6 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
-  top: 0;
-  z-index: 10;
-  background-color: white;
-  box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.1);
   & div {
     display: flex;
     align-items: center;
