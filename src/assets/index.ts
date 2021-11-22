@@ -1,3 +1,11 @@
 export { default as Heart } from "./heart";
 export { default as Logo } from "./logo.png";
 export { default as Search } from "./search";
+export { default as ClothesInformation } from "./clothesInformation";
+export { default as Share } from "./share";
+export { default as Prev } from "./prev";
+export { default as Next } from "./next";
+export { default as Check } from "./check";
+export { default as LogoWithout } from "./logowithout.png";
+export { default as ProfileImg } from "./profileImg.png";
+export { default as BaseProfile } from "./BaseProfile.png";
