@@ -4,7 +4,7 @@ import Logo from "../../../assets/logo.png";
 import InputBox from "../input/index";
 import Button from "../button/index";
 import { useHistory } from "react-router";
-import {requestWithAccessToken, requestWithOutAccessToken} from "../../../utils/axios";
+import {ACCESS_TOKEN, requestWithOutAccessToken} from "../../../utils/axios";
 
 interface SigninProps {
   id: string;
@@ -55,7 +55,7 @@ const Signin = () => {
       }
     }).then((res) => {
       console.log(res);
-      localStorage.setItem("token", res.token);
+      localStorage.setItem(ACCESS_TOKEN, res.token);
       localStorage.setItem("userId", res.userId)
       alert("로그인 성공 메인페이지로 이동합니다.");
       history.push("/");
@@ -65,15 +65,24 @@ const Signin = () => {
     })
   }
 
+  const submit = (e: any) => {
+    if(e.key === 'Enter'){
+      signinBtn(e);
+    }
+  }
+
+
   return (
     <S.Wrapper>
       <S.Logo src={Logo} />
       <InputBox
+        onKeyPress={submit}
         onChange={idChange}
         title="Email"
         placeholder="이메일을 입력해주세요."
       />
       <InputBox
+        onKeyPress={submit}
         onChange={pwChange}
         title="Password"
         placeholder="비밀번호를 입력해 주세요."

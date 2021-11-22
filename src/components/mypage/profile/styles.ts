@@ -40,7 +40,11 @@ export const Right = styled.div`
   }
 `;
 
-export const ProfileImg = styled.img``;
+export const ProfileImg = styled.img`
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+`;
 
 export const UserInfo = styled.div`
   & div:nth-of-type(1) {
