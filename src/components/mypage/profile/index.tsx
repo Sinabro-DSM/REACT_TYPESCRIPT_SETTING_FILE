@@ -1,19 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./styles";
 import {BaseProfile} from "../../../assets/index";
 import { useHistory } from "react-router";
-import {requestWithAccessToken} from "../../../utils/axios";
+import {requestWithAccessToken, requestWithOutAccessToken} from "../../../utils/axios";
+import FeedCardList from "../../public/feedCardList";
 
 interface UserProps {
-  name: string;
+  nickname: string;
   email: string;
   postCnt: number;
+  postId: [];
 }
 
-const Profile = ({name, email, postCnt} : UserProps) => {  
+const Profile = () => {  
   const history = useHistory();
 
+  const [arr, setArr] = useState([]);
+
   const userId = localStorage.getItem("userId");
+
+  const [data, setData] = useState<UserProps>({
+    nickname: "",
+    email: "",
+    postCnt: 0,
+    postId: []
+  })
+  const {nickname, email, postCnt, postId} = data;
 
   useEffect(() => {
     requestWithAccessToken({
@@ -21,9 +33,33 @@ const Profile = ({name, email, postCnt} : UserProps) => {
       url: `/user/${userId}`,
       headers: {},
       data: {}
-    });
+    }).then((res) => {
+      const {nickname, email, postCnt, postId } = res;
+      console.log(res); 
+      setData({
+        nickname,
+        email,
+        postCnt, 
+        postId
+      });
+    }).catch((err) => {
+      console.log(err)
+    })
   }, []);
 
+  postId.map((v: any, index: number) => {
+    requestWithOutAccessToken({
+      method: "GET",
+      url: `/post/${postId}`,
+      headers: {},
+      data: {}
+    }).then((res) => {
+      console.log(res);
+    }).catch((err) => {
+      console.log(err);
+    })
+  });
+  
   return (
     <S.Wrapper>
       <S.Information>
@@ -32,7 +68,7 @@ const Profile = ({name, email, postCnt} : UserProps) => {
           <div className="InfoWrapper">
             <S.UserInfo>
               <div>
-                <h1>{name}</h1>
+                <h1>{nickname}</h1>
                 <button />
               </div>
               <div>
@@ -57,14 +93,16 @@ const Profile = ({name, email, postCnt} : UserProps) => {
             </S.Label>
           </div>
         </S.Left>
-
+        <S.ListContainer>
+          <FeedCardList newArr={arr}></FeedCardList>
+        </S.ListContainer>
         <S.Right>
           <button onClick={() => history.push("/mycloth")}>
             나만의 옷장 {">"}
           </button>
         </S.Right>
       </S.Information>
-    </S.Wrapper>
+    </S.Wrapper> 
   );
 };
 

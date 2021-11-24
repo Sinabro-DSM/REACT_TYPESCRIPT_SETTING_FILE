@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import { COLOR } from "../../../styles/index";
+import { WIDTH, COLOR } from "../../../styles/index";
 
 export const Wrapper = styled.section`
   width: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 `;
 
@@ -101,3 +103,9 @@ export const Label = styled.div`
     }
   }
 `;
+
+
+export const ListContainer = styled.section`
+  width: ${WIDTH.main};
+  position: relative;
+`
